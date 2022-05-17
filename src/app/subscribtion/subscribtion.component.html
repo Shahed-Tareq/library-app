@@ -1,0 +1,22 @@
+<h2> Template Driven Form  </h2>
+<form #emailForm="ngForm" novalidate (ngSubmit)="onSubmitForm(emailForm)">
+    <div> Enter Your Email
+        <input type="email" name="email" #email="ngModel" ngModel required
+            pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}">
+        <div *ngIf="!email.valid && (email.dirty || email.touched)" class="text-danger">
+            <div *ngIf="email.errors?.['required']"> Email is required</div>
+            <div *ngIf="email.errors?.['pattern']"> Enter a valid email </div>
+           
+        </div>
+    </div>
+    <div class="m-2"> Enter Your Name
+        <input type="text" name="username" required pattern="[A-Za-z0-9 \s]{5,}" #name="ngModel" ngModel>
+        <div *ngIf="!name.valid && (name.dirty || name.touched)" class="text-danger">
+            <div *ngIf="name.errors?.['required']"> Name is required</div>
+            <div *ngIf="name.errors?.['pattern']"> Enter a valid Name </div>
+        </div>
+    </div>
+
+    <input type="submit" value="submit" name="submit" [disabled]="!emailForm.valid">
+</form>
+<p> </p>

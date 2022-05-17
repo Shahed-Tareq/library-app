@@ -1,0 +1,8 @@
+<button (click)="AddTest()"> Add Book </button>
+<div class="div" *ngFor="let item of books" id="bk-{{item.id}}">
+<h2> {{item.id}} ){{item.title}}</h2>
+<div>
+  <p> {{item.author}}  || {{item.publishDate}}</p>
+  <p> Page: {{item.page}} , auditon: {{item.audition}} </p>
+</div>
+</div>

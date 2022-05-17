@@ -1,0 +1,20 @@
+<h5 class="bg-primary p-2"> Reactive Form </h5>
+<form [formGroup]="emailFrm"  (ngSubmit)="onFormSubmit()">
+    <div>
+        <input type="text" formControlName="email">
+        <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="text-danger">
+            <div *ngIf="email?.errors?.['required']"> Email is required</div>
+            <div *ngIf="email?.errors?.['pattern']"> Enter a valid email </div>
+           
+        </div>
+        <input type="text" formControlName="userName">
+        <div *ngIf="!name?.valid && (name?.dirty || name?.touched)" class="text-danger">
+            <div *ngIf="name?.errors?.['required']"> Name is required</div>
+            <div *ngIf="name?.errors?.['pattern']"> Enter a valid Name </div>
+          
+        </div>
+    </div>
+    <button type="submit" [disabled]="!emailFrm.valid">  Submit</button>
+</form>
+<!-- !emailFrm.controls['email'] هيك بوصل للاسماء -->
+<!-- <div *ngIf="name?.errors?.['minlength']"> You must have atleast 5 letters </div> --> check if it has 5 letters
